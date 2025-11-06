@@ -1,47 +1,50 @@
 # Post Management Application
 
-Full-stack Post Management System dengan Laravel 12 (Backend API) dan Next.js 16 App Router (Frontend).
+A full-stack **Post Management System** built with **Laravel 12 (Backend API)** and **Next.js 16 App Router (Frontend)**.
+
 
 ## 🚀 Features
 
 ### Backend (Laravel)
 
-- RESTful API dengan JWT Authentication
-- Service Layer Architecture
-- Eloquent ORM dengan Relationships
-- Form Request Validation
-- Database Seeding
-- Clean Code & SOLID Principles
+* RESTful API with JWT Authentication
+* Service Layer Architecture
+* Eloquent ORM with Relationships
+* Form Request Validation
+* Database Seeding
+* Clean Code & SOLID Principles
 
 ### Frontend (Next.js)
 
-- Next.js 16 App Router
-- TypeScript
-- TailwindCSS + DaisyUI
-- React Hook Form + Zod Validation
-- JWT Authentication
-- Responsive Design
+* Next.js 16 App Router
+* TypeScript
+* TailwindCSS + DaisyUI
+* React Hook Form + Zod Validation
+* JWT Authentication
+* Responsive Design
 
 ### Infrastructure
 
-- Docker Compose orchestration
-- MySQL 8.0 Database
-- Nginx Reverse Proxy (optional)
-- Auto-migration & seeding
+* Docker Compose orchestration
+* MySQL 8.0 Database
+* Nginx Reverse Proxy (optional)
+* Auto-migration & seeding
+
 
 ## 📋 Prerequisites
 
-- Docker & Docker Compose
-- Git
+* Docker & Docker Compose
+* Git
 
-**OR untuk development tanpa Docker:**
+**OR for development without Docker:**
 
-- PHP 8.2+
-- Composer
-- Node.js 18+
-- MySQL 8.0+
+* PHP 8.2+
+* Composer
+* Node.js 18+
+* MySQL 8.0+
 
-## 🐳 Quick Start dengan Docker
+
+## 🐳 Quick Start with Docker
 
 ### 1. Clone Repository
 
@@ -68,24 +71,24 @@ cp .env.local.example .env.local
 cd ..
 ```
 
-### 3. Build & Run dengan Docker Compose
+### 3. Build & Run with Docker Compose
 
 ```bash
 docker-compose up -d --build
 ```
 
-Proses ini akan:
+This will:
 
-- Build Laravel & Next.js containers
-- Setup MySQL database
-- Run migrations & seeders
-- Start semua services
+* Build Laravel & Next.js containers
+* Setup MySQL database
+* Run migrations & seeders
+* Start all services
 
 ### 4. Access Applications
 
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000/api
-- **Nginx (if enabled)**: http://localhost
+* **Frontend**: [http://localhost:3000](http://localhost:3000)
+* **Backend API**: [http://localhost:8000/api](http://localhost:8000/api)
+* **Nginx (if enabled)**: [http://localhost](http://localhost)
 
 ### 5. Demo Login
 
@@ -93,13 +96,14 @@ Proses ini akan:
 Email: john@example.com
 Password: password123
 
-atau
+or
 
 Email: admin@example.com
 Password: admin123
 ```
 
-## 💻 Development tanpa Docker
+
+## 💻 Development Without Docker
 
 ### Backend Setup
 
@@ -110,7 +114,7 @@ cp .env.example .env
 php artisan key:generate
 php artisan jwt:secret
 
-# Setup database di .env
+# Setup database in .env
 # DB_HOST=127.0.0.1
 # DB_DATABASE=post_management
 # DB_USERNAME=root
@@ -120,7 +124,7 @@ php artisan migrate:fresh --seed
 php artisan serve
 ```
 
-Backend running di: http://localhost:8000
+Backend running at: [http://localhost:8000](http://localhost:8000)
 
 ### Frontend Setup
 
@@ -135,7 +139,8 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-Frontend running di: http://localhost:3000
+Frontend running at: [http://localhost:3000](http://localhost:3000)
+
 
 ## 📁 Project Structure
 
@@ -174,6 +179,7 @@ post-management-app/
 └── README.md
 ```
 
+
 ## 🔌 API Endpoints
 
 ### Authentication
@@ -196,7 +202,8 @@ PUT    /api/posts/{id}       - Update post (owner only)
 DELETE /api/posts/{id}       - Delete post (owner only)
 ```
 
-## 🧪 Testing API dengan cURL
+
+## 🧪 Testing API with cURL
 
 ### Register
 
@@ -229,6 +236,7 @@ curl -X GET http://localhost:8000/api/posts \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
+
 ## 🛠️ Docker Commands
 
 ```bash
@@ -256,6 +264,7 @@ docker exec -it post_management_mysql mysql -u root -p
 # Reset database
 docker-compose exec backend php artisan migrate:fresh --seed
 ```
+
 
 ## 🔧 Maintenance Commands
 
@@ -287,57 +296,64 @@ docker-compose exec frontend npm run build
 docker-compose exec frontend rm -rf .next
 ```
 
+
 ## 🔒 Security Considerations
 
 ### Production Deployment
 
 1. **Environment Variables**
 
-   - Change all default passwords
-   - Generate strong JWT secret
-   - Use production database credentials
-   - Set `APP_DEBUG=false` in Laravel
+   * Change all default passwords
+   * Generate strong JWT secret
+   * Use production database credentials
+   * Set `APP_DEBUG=false` in Laravel
+
 2. **CORS Configuration**
 
-   - Configure allowed origins in Laravel
-   - Update frontend API URL
+   * Configure allowed origins in Laravel
+   * Update frontend API URL
+
 3. **HTTPS**
 
-   - Use SSL certificates
-   - Configure Nginx for HTTPS
-   - Update all URLs to https://
+   * Use SSL certificates
+   * Configure Nginx for HTTPS
+   * Update all URLs to `https://`
+
 4. **Database**
 
-   - Use strong passwords
-   - Restrict database access
-   - Regular backups
+   * Use strong passwords
+   * Restrict database access
+   * Schedule regular backups
+
 5. **Docker**
 
-   - Use production-optimized Dockerfiles
-   - Implement proper secrets management
-   - Regular security updates
+   * Use production-optimized Dockerfiles
+   * Implement proper secrets management
+   * Perform regular security updates
+
 
 ## ⚡ Performance Optimization
 
 ### Backend
 
-- Database indexing (sudah implemented)
-- Query optimization dengan eager loading
-- API response caching
-- Rate limiting (dapat dikonfigurasi)
+* Database indexing (implemented)
+* Query optimization with eager loading
+* API response caching
+* Rate limiting (configurable)
 
 ### Frontend
 
-- Next.js automatic code splitting
-- Image optimization
-- Server Components untuk data fetching
-- Client Components hanya untuk interactivity
+* Next.js automatic code splitting
+* Image optimization
+* Server Components for data fetching
+* Client Components only for interactivity
 
 ### Infrastructure
 
-- Nginx caching
-- Database connection pooling
-- Container resource limits
+* Nginx caching
+* Database connection pooling
+* Container resource limits
+
 
 ## 🐛 Troubleshooting
 
@@ -363,7 +379,7 @@ docker-compose logs backend
 # Restart backend
 docker-compose restart backend
 
-# Access container and check
+# Access container and clear config
 docker exec -it post_management_backend bash
 php artisan config:clear
 ```
@@ -389,7 +405,8 @@ lsof -i :3306
 # Change ports in docker-compose.yml
 ```
 
-## 📊 **ARCHITECTURE DIAGRAM**
+
+## 📊 **Architecture Diagram**
 
 ```bash
 ┌─────────────────────────────────────────────────────────┐
@@ -420,146 +437,122 @@ lsof -i :3306
                                     └────────────────────┘
 ```
 
----
 
-## ✅ **CHECKLIST IMPLEMENTASI**
+## ✅ **Implementation Checklist**
 
 ### Backend Laravel ✓
 
-- [X] Authentication (Register, Login, Logout)
-- [X] JWT Token implementation
-- [X] User model dengan relationships
-- [X] Post model dengan relationships
-- [X] Migration files
-- [X] Database seeder
-- [X] Form Request Validation
-- [X] Service Layer (AuthService, PostService)
-- [X] API Controllers
-- [X] RESTful API routes
-- [X] Middleware authentication
-- [X] CORS configuration
-- [X] Error handling
-- [X] Dockerfile
-- [X] README documentation
+* [x] Authentication (Register, Login, Logout)
+* [x] JWT Token implementation
+* [x] User model with relationships
+* [x] Post model with relationships
+* [x] Migration files
+* [x] Database seeder
+* [x] Form Request Validation
+* [x] Service Layer (AuthService, PostService)
+* [x] API Controllers
+* [x] RESTful API routes
+* [x] Middleware authentication
+* [x] CORS configuration
+* [x] Error handling
+* [x] Dockerfile
+* [x] README documentation
 
 ### Frontend Next.js ✓
 
-- [X] Authentication pages (Login, Register)
-- [X] Protected routes dengan middleware
-- [X] Dashboard/Home page
-- [X] Posts listing dengan pagination
-- [X] Post detail page
-- [X] Create post page
-- [X] Edit post page
-- [X] Navbar component
-- [X] PostCard component
-- [X] Pagination component
-- [X] PostForm component
-- [X] API service layer
-- [X] Auth utilities
-- [X] TypeScript types
-- [X] Form validation (Zod)
-- [X] TailwindCSS + DaisyUI styling
-- [X] Responsive design
-- [X] Error handling
-- [X] Loading states
-- [X] Dockerfile
-- [X] README documentation
+* [x] Authentication pages (Login, Register)
+* [x] Protected routes with middleware
+* [x] Dashboard/Home page
+* [x] Posts listing with pagination
+* [x] Post detail page
+* [x] Create post page
+* [x] Edit post page
+* [x] Navbar component
+* [x] PostCard component
+* [x] Pagination component
+* [x] PostForm component
+* [x] API service layer
+* [x] Auth utilities
+* [x] TypeScript types
+* [x] Form validation (Zod)
+* [x] TailwindCSS + DaisyUI styling
+* [x] Responsive design
+* [x] Error handling
+* [x] Loading states
+* [x] Dockerfile
+* [x] README documentation
 
 ### Docker Setup ✓
 
-- [X] docker-compose.yml
-- [X] MySQL service
-- [X] Backend service configuration
-- [X] Frontend service configuration
-- [X] Nginx reverse proxy (optional)
-- [X] Networks configuration
-- [X] Volumes configuration
-- [X] Health checks
-- [X] Auto-migration & seeding
+* [x] docker-compose.yml
+* [x] MySQL service
+* [x] Backend configuration
+* [x] Frontend configuration
+* [x] Nginx reverse proxy (optional)
+* [x] Networks & volumes
+* [x] Health checks
+* [x] Auto-migration & seeding
 
-### Documentation ✓
 
-- [X] Root README dengan quickstart
-- [X] Backend README
-- [X] Frontend README
-- [X] API documentation
-- [X] Docker commands
-- [X] Troubleshooting guide
-- [X] Security considerations
-- [X] Performance optimization tips
-
----
-
-## 💡 **KEY FEATURES & BEST PRACTICES**
+## 💡 **Key Features & Best Practices**
 
 ### Clean Architecture
 
-- **Separation of Concerns**: Controller → Service → Model
-- **Single Responsibility**: Setiap class punya satu tugas spesifik
-- **Dependency Injection**: Services di-inject ke controllers
+* **Separation of Concerns**: Controller → Service → Model
+* **Single Responsibility**: Each class has one purpose
+* **Dependency Injection**: Services injected into controllers
 
 ### Security
 
-- **Password Hashing**: Bcrypt untuk password
-- **JWT Authentication**: Token-based auth
-- **CSRF Protection**: Built-in Laravel
-- **Input Validation**: Form Requests & Zod
-- **SQL Injection Prevention**: Eloquent ORM
+* Password Hashing with Bcrypt
+* JWT-based Authentication
+* CSRF Protection (Laravel built-in)
+* Input Validation (Form Requests & Zod)
+* SQL Injection Prevention (Eloquent ORM)
 
 ### Performance
 
-- **Database Indexing**: Foreign keys & frequently queried columns
-- **Eager Loading**: `with()` untuk prevent N+1 queries
-- **Pagination**: Efficient data loading
-- **Code Splitting**: Next.js automatic optimization
+* Database Indexing (FK & frequent queries)
+* Eager Loading with `with()`
+* Pagination for data efficiency
+* Automatic code splitting (Next.js)
 
 ### Scalability
 
-- **Stateless API**: RESTful design
-- **Microservices Ready**: Separated backend & frontend
-- **Docker Containers**: Easy horizontal scaling
-- **Service Layer**: Business logic separation
+* Stateless RESTful API
+* Backend & Frontend separation
+* Dockerized for horizontal scaling
+* Service Layer for business logic
 
----
 
 ## 📚 Documentation
 
-- [Laravel Documentation](https://laravel.com/docs)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Docker Documentation](https://docs.docker.com)
-- [TailwindCSS Documentation](https://tailwindcss.com/docs)
-- [DaisyUI Components](https://daisyui.com/components/)
+* [Laravel Docs](https://laravel.com/docs)
+* [Next.js Docs](https://nextjs.org/docs)
+* [Docker Docs](https://docs.docker.com)
+* [TailwindCSS Docs](https://tailwindcss.com/docs)
+* [DaisyUI Components](https://daisyui.com/components/)
+
 
 ## 🤝 Contributing
 
-1. Fork the project
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+1. Fork this project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
+5. Open a Pull Request
+
 
 ## 📝 License
 
-This project is open-source and available under the MIT License.
+This project is open-source and licensed under the **MIT License**.
+
 
 ## 👨‍💻 Author
 
-Developed with ❤️ using Laravel, Next.js, and Docker
+Developed with ❤️ using **Laravel**, **Next.js**, and **Docker**.
 
-## 🎯 Roadmap
-
-- [ ] Unit & Integration Tests
-- [ ] Image upload for posts
-- [ ] Comments system
-- [ ] User profiles
-- [ ] Search & filtering
-- [ ] Tags/categories
-- [ ] Social sharing
-- [ ] Email notifications
-- [ ] Admin dashboard
-- [ ] Analytics
 
 ## ⭐ Support
 
-Jika project ini membantu, berikan ⭐ di repository!
+If this project helps you, please give it a ⭐ on the repository!
