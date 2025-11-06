@@ -29,7 +29,6 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero Section */}
       <div className="hero min-h-[50vh] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl mb-8">
         <div className="hero-content text-center">
           <div className="max-w-md">
@@ -45,7 +44,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Stats Section */}
       <div className="stats stats-vertical lg:stats-horizontal shadow w-full mb-8">
         <div className="stat">
           <div className="stat-figure text-primary">
@@ -111,7 +109,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Recent Posts Section */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl font-bold">Recent Posts</h2>

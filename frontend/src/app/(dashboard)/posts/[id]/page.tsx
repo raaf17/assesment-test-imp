@@ -7,6 +7,7 @@ import { apiService } from "@/lib/api";
 import { authService } from "@/lib/auth";
 import { Post } from "@/types";
 import { formatDate } from "@/lib/utils";
+import toast from "react-hot-toast";
 
 export default function PostDetailPage() {
   const router = useRouter();
@@ -28,7 +29,7 @@ export default function PostDetailPage() {
       }
     } catch (error) {
       console.error("Failed to fetch post:", error);
-      alert("Post not found!");
+      toast.error("Post not found!");
       router.push("/posts");
     } finally {
       setIsLoading(false);
@@ -43,11 +44,11 @@ export default function PostDetailPage() {
     try {
       const response = await apiService.deletePost(Number(id));
       if (response.success) {
-        alert("Post deleted successfully!");
+        toast.success("Post deleted successfully!");
         router.push("/posts");
       }
     } catch (error: any) {
-      alert(
+      toast.error(
         error.response?.data?.message ||
           "Failed to delete post. You can only delete your own posts."
       );

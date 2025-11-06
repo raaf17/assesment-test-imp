@@ -7,6 +7,7 @@ import { authService } from "@/lib/auth";
 import { Post } from "@/types";
 import PostCard from "@/components/ui/PostCard";
 import Pagination from "@/components/ui/Pagination";
+import toast from "react-hot-toast";
 
 export default function PostsPage() {
   const router = useRouter();
@@ -45,10 +46,10 @@ export default function PostsPage() {
       const response = await apiService.deletePost(id);
       if (response.success) {
         fetchPosts(currentPage);
-        alert("Post deleted successfully!");
+        toast.success("Post deleted successfully!");
       }
     } catch (error: any) {
-      alert(
+      toast.error(
         error.response?.data?.message ||
           "Failed to delete post. You can only delete your own posts."
       );

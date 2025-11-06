@@ -1,10 +1,11 @@
 # Post Management Application
 
-Full-stack Post Management System dengan Laravel 11 (Backend API) dan Next.js 14 App Router (Frontend).
+Full-stack Post Management System dengan Laravel 12 (Backend API) dan Next.js 16 App Router (Frontend).
 
 ## 🚀 Features
 
 ### Backend (Laravel)
+
 - RESTful API dengan JWT Authentication
 - Service Layer Architecture
 - Eloquent ORM dengan Relationships
@@ -13,7 +14,8 @@ Full-stack Post Management System dengan Laravel 11 (Backend API) dan Next.js 14
 - Clean Code & SOLID Principles
 
 ### Frontend (Next.js)
-- Next.js 14 App Router
+
+- Next.js 16 App Router
 - TypeScript
 - TailwindCSS + DaisyUI
 - React Hook Form + Zod Validation
@@ -21,6 +23,7 @@ Full-stack Post Management System dengan Laravel 11 (Backend API) dan Next.js 14
 - Responsive Design
 
 ### Infrastructure
+
 - Docker Compose orchestration
 - MySQL 8.0 Database
 - Nginx Reverse Proxy (optional)
@@ -32,6 +35,7 @@ Full-stack Post Management System dengan Laravel 11 (Backend API) dan Next.js 14
 - Git
 
 **OR untuk development tanpa Docker:**
+
 - PHP 8.2+
 - Composer
 - Node.js 18+
@@ -49,6 +53,7 @@ cd post-management-app
 ### 2. Setup Environment Files
 
 **Backend:**
+
 ```bash
 cd backend
 cp .env.example .env
@@ -56,6 +61,7 @@ cd ..
 ```
 
 **Frontend:**
+
 ```bash
 cd frontend
 cp .env.local.example .env.local
@@ -69,6 +75,7 @@ docker-compose up -d --build
 ```
 
 Proses ini akan:
+
 - Build Laravel & Next.js containers
 - Setup MySQL database
 - Run migrations & seeders
@@ -134,7 +141,7 @@ Frontend running di: http://localhost:3000
 
 ```md
 post-management-app/
-├── backend/              # Laravel 11 API
+├── backend/              # Laravel 12 API
 │   ├── app/
 │   │   ├── Http/
 │   │   │   ├── Controllers/API/
@@ -149,7 +156,7 @@ post-management-app/
 │   ├── Dockerfile
 │   └── README.md
 │
-├── frontend/             # Next.js 14 App Router
+├── frontend/             # Next.js 16 App Router
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── (auth)/
@@ -170,6 +177,7 @@ post-management-app/
 ## 🔌 API Endpoints
 
 ### Authentication
+
 ```bash
 POST   /api/auth/register    - Register new user
 POST   /api/auth/login       - Login user
@@ -179,6 +187,7 @@ POST   /api/auth/refresh     - Refresh JWT token (protected)
 ```
 
 ### Posts (Protected)
+
 ```bash
 GET    /api/posts            - Get all posts (paginated)
 GET    /api/posts/{id}       - Get single post
@@ -190,6 +199,7 @@ DELETE /api/posts/{id}       - Delete post (owner only)
 ## 🧪 Testing API dengan cURL
 
 ### Register
+
 ```bash
 curl -X POST http://localhost:8000/api/auth/register \
   -H "Content-Type: application/json" \
@@ -202,6 +212,7 @@ curl -X POST http://localhost:8000/api/auth/register \
 ```
 
 ### Login
+
 ```bash
 curl -X POST http://localhost:8000/api/auth/login \
   -H "Content-Type: application/json" \
@@ -212,6 +223,7 @@ curl -X POST http://localhost:8000/api/auth/login \
 ```
 
 ### Get Posts (with token)
+
 ```bash
 curl -X GET http://localhost:8000/api/posts \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
@@ -248,6 +260,7 @@ docker-compose exec backend php artisan migrate:fresh --seed
 ## 🔧 Maintenance Commands
 
 ### Backend (Laravel)
+
 ```bash
 # Clear cache
 docker-compose exec backend php artisan cache:clear
@@ -265,6 +278,7 @@ docker-compose exec backend php artisan jwt:secret
 ```
 
 ### Frontend (Next.js)
+
 ```bash
 # Rebuild
 docker-compose exec frontend npm run build
@@ -278,26 +292,27 @@ docker-compose exec frontend rm -rf .next
 ### Production Deployment
 
 1. **Environment Variables**
+
    - Change all default passwords
    - Generate strong JWT secret
    - Use production database credentials
    - Set `APP_DEBUG=false` in Laravel
-
 2. **CORS Configuration**
+
    - Configure allowed origins in Laravel
    - Update frontend API URL
-
 3. **HTTPS**
+
    - Use SSL certificates
    - Configure Nginx for HTTPS
    - Update all URLs to https://
-
 4. **Database**
+
    - Use strong passwords
    - Restrict database access
    - Regular backups
-
 5. **Docker**
+
    - Use production-optimized Dockerfiles
    - Implement proper secrets management
    - Regular security updates
@@ -305,18 +320,21 @@ docker-compose exec frontend rm -rf .next
 ## ⚡ Performance Optimization
 
 ### Backend
+
 - Database indexing (sudah implemented)
 - Query optimization dengan eager loading
 - API response caching
 - Rate limiting (dapat dikonfigurasi)
 
 ### Frontend
+
 - Next.js automatic code splitting
 - Image optimization
 - Server Components untuk data fetching
 - Client Components hanya untuk interactivity
 
 ### Infrastructure
+
 - Nginx caching
 - Database connection pooling
 - Container resource limits
@@ -324,6 +342,7 @@ docker-compose exec frontend rm -rf .next
 ## 🐛 Troubleshooting
 
 ### Database Connection Failed
+
 ```bash
 # Check MySQL status
 docker-compose ps mysql
@@ -336,6 +355,7 @@ docker-compose restart mysql
 ```
 
 ### Backend API Not Responding
+
 ```bash
 # Check backend logs
 docker-compose logs backend
@@ -349,6 +369,7 @@ php artisan config:clear
 ```
 
 ### Frontend Build Issues
+
 ```bash
 # Rebuild frontend
 docker-compose up -d --build frontend
@@ -358,6 +379,7 @@ docker-compose logs frontend
 ```
 
 ### Port Already in Use
+
 ```bash
 # Check ports
 lsof -i :3000
@@ -407,265 +429,3 @@ Developed with ❤️ using Laravel, Next.js, and Docker
 ## ⭐ Support
 
 Jika project ini membantu, berikan ⭐ di repository!
-```
-
----
-
-## 🎯 **ADDITIONAL FILES**
-
-### **`.dockerignore`** (Backend)
-```md
-node_modules
-vendor
-.git
-.env
-storage/logs
-storage/framework/cache
-storage/framework/sessions
-storage/framework/views
-bootstrap/cache
-.phpunit.result.cache
-```
-
-### **`.dockerignore`** (Frontend)
-```md
-node_modules
-.next
-.git
-.env.local
-.env*.local
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-```
-
-### **`.gitignore`** (Root)
-```md
-# Dependencies
-node_modules/
-vendor/
-
-# Environment files
-.env
-.env.local
-.env*.local
-
-# Build outputs
-.next/
-dist/
-build/
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Docker
-docker-compose.override.yml
-
-# Laravel
-storage/framework/cache/*
-storage/framework/sessions/*
-storage/framework/views/*
-storage/logs/*
-bootstrap/cache/*
-```
-
----
-
-## 📊 **ARCHITECTURE DIAGRAM**
-
-```bash
-┌─────────────────────────────────────────────────────────┐
-│                     NGINX (Port 80)                      │
-│                   Reverse Proxy Layer                    │
-└────────────┬───────────────────────────┬─────────────────┘
-             │                           │
-             ├───── Frontend Routes      └───── API Routes
-             │      (/)                         (/api)
-             │                                  │
-   ┌─────────▼────────────┐         ┌──────────▼────────────┐
-   │   Next.js Frontend   │         │   Laravel Backend    │
-   │   (Port 3000)        │◄────────┤   (Port 8000)        │
-   │                      │   JWT   │                      │
-   │  - App Router        │  Auth   │  - RESTful API       │
-   │  - TypeScript        │         │  - JWT Auth          │
-   │  - TailwindCSS       │         │  - Service Layer     │
-   │  - DaisyUI           │         │  - Eloquent ORM      │
-   └──────────────────────┘         └──────────┬───────────┘
-                                              │
-                                              │
-                                    ┌─────────▼──────────┐
-                                    │   MySQL Database   │
-                                    │   (Port 3306)      │
-                                    │                    │
-                                    │  - users           │
-                                    │  - posts           │
-                                    └────────────────────┘
-```
-
----
-
-## ✅ **CHECKLIST IMPLEMENTASI**
-
-### Backend Laravel ✓
-- [x] Authentication (Register, Login, Logout)
-- [x] JWT Token implementation
-- [x] User model dengan relationships
-- [x] Post model dengan relationships
-- [x] Migration files
-- [x] Database seeder
-- [x] Form Request Validation
-- [x] Service Layer (AuthService, PostService)
-- [x] API Controllers
-- [x] RESTful API routes
-- [x] Middleware authentication
-- [x] CORS configuration
-- [x] Error handling
-- [x] Dockerfile
-- [x] README documentation
-
-### Frontend Next.js ✓
-- [x] Authentication pages (Login, Register)
-- [x] Protected routes dengan middleware
-- [x] Dashboard/Home page
-- [x] Posts listing dengan pagination
-- [x] Post detail page
-- [x] Create post page
-- [x] Edit post page
-- [x] Navbar component
-- [x] PostCard component
-- [x] Pagination component
-- [x] PostForm component
-- [x] API service layer
-- [x] Auth utilities
-- [x] TypeScript types
-- [x] Form validation (Zod)
-- [x] TailwindCSS + DaisyUI styling
-- [x] Responsive design
-- [x] Error handling
-- [x] Loading states
-- [x] Dockerfile
-- [x] README documentation
-
-### Docker Setup ✓
-- [x] docker-compose.yml
-- [x] MySQL service
-- [x] Backend service configuration
-- [x] Frontend service configuration
-- [x] Nginx reverse proxy (optional)
-- [x] Networks configuration
-- [x] Volumes configuration
-- [x] Health checks
-- [x] Auto-migration & seeding
-
-### Documentation ✓
-- [x] Root README dengan quickstart
-- [x] Backend README
-- [x] Frontend README
-- [x] API documentation
-- [x] Docker commands
-- [x] Troubleshooting guide
-- [x] Security considerations
-- [x] Performance optimization tips
-
----
-
-## 🚀 **CARA MENJALANKAN PROJECT**
-
-### Option 1: Menggunakan Docker (RECOMMENDED)
-
-```bash
-# 1. Clone project
-git clone <your-repo>
-cd post-management-app
-
-# 2. Setup environment
-cd backend && cp .env.example .env && cd ..
-cd frontend && cp .env.local.example .env.local && cd ..
-
-# 3. Build dan jalankan semua services
-docker-compose up -d --build
-
-# 4. Tunggu beberapa saat untuk migration & seeding
-# Check logs jika perlu
-docker-compose logs -f
-
-# 5. Access aplikasi
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:8000/api
-# Login dengan: john@example.com / password123
-```
-
-### Option 2: Development Lokal
-
-**Backend:**
-```bash
-cd backend
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan jwt:secret
-
-# Setup database MySQL
-# Edit .env sesuai konfigurasi database lokal
-
-php artisan migrate:fresh --seed
-php artisan serve
-```
-
-**Frontend:**
-```bash
-cd frontend
-npm install
-cp .env.local.example .env.local
-
-# Edit .env.local:
-# NEXT_PUBLIC_API_URL=http://localhost:8000/api
-
-npm run dev
-```
-
----
-
-## 💡 **KEY FEATURES & BEST PRACTICES**
-
-### Clean Architecture
-- **Separation of Concerns**: Controller → Service → Model
-- **Single Responsibility**: Setiap class punya satu tugas spesifik
-- **Dependency Injection**: Services di-inject ke controllers
-
-### Security
-- **Password Hashing**: Bcrypt untuk password
-- **JWT Authentication**: Token-based auth
-- **CSRF Protection**: Built-in Laravel
-- **Input Validation**: Form Requests & Zod
-- **SQL Injection Prevention**: Eloquent ORM
-
-### Performance
-- **Database Indexing**: Foreign keys & frequently queried columns
-- **Eager Loading**: `with()` untuk prevent N+1 queries
-- **Pagination**: Efficient data loading
-- **Code Splitting**: Next.js automatic optimization
-
-### Scalability
-- **Stateless API**: RESTful design
-- **Microservices Ready**: Separated backend & frontend
-- **Docker Containers**: Easy horizontal scaling
-- **Service Layer**: Business logic separation
-
----
-
-Semua file dan konfigurasi sudah lengkap dan siap digunakan! Project ini mengikuti best practices untuk production-ready application dengan arsitektur yang clean, maintainable, dan scalable. 
-
-Silakan test dan develop lebih lanjut sesuai kebutuhan! 🚀
